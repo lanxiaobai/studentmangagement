@@ -53,7 +53,7 @@
                   <input type="text" class="form-control" name="code" id="code" placeholder="请输入验证码">
                 </div>
                 <div class="col-sm-4">
-                  <img class="code-icon" src="../../img/code.PNG" alt="">
+                  <img class="code-icon" src="/login/captcha" alt="">
                 </div>
               </div>
               <div class="form-group">
@@ -77,3 +77,13 @@
 <script src="../lib/js/jquery-1.12.4.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="../lib/js/bootstrap.min.js"></script>
+<script>
+  $(function(){
+    $('.code-icon').click(function(){
+      // 重新获取验证码,重新赋值即可
+      // 把两次设置的url不一样,浏览器才会认为图片有变动
+      var imgurl=$(this).attr('src')+`?${Math.random()}`;
+      $(this).attr('src',imgurl);
+    })
+  })
+</script>
