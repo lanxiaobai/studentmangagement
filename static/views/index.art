@@ -31,8 +31,13 @@
     .navbar-link.my-logout:hover {
         color: red;
     }
-    .breadcrumb{
+
+    .breadcrumb {
         margin-bottom: 0;
+    }
+
+    .hidden {
+        display: none;
     }
 </style>
 
@@ -57,7 +62,7 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <p class="navbar-text navbar-right">欢迎[么么哒]登录
-                                <a href="#" class="navbar-link my-logout">退出</a>
+                                <a href="/logout" class="navbar-link my-logout">退出</a>
                             </p>
                         </div>
                     </div>
@@ -74,7 +79,7 @@
                 <a href="#" class="list-group-item">修改密码</a>
                 <a href="#" class="list-group-item">退出系统</a>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-9 list-box">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <ol class="breadcrumb">
@@ -96,8 +101,8 @@
                                     <input type="text" class="form-control" id="exampleInputAmount" placeholder="请输入学生姓名进行查询">
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success">查询</button>
-                            <button type="submit" class="btn btn-success">新增</button>
+                            <button type="submit" class="btn-search btn btn-success">查询</button>
+                            <button type="submit" class="btn-show-add btn btn-success">新增</button>
                         </form>
                     </div>
                     <div class="panel-body">
@@ -126,11 +131,75 @@
                             </tbody>
                         </table>
                     </div>
+
+                </div>
+            </div>
+            <!-- 新增区域 -->
+            <div class="col-md-9 add-box hidden">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <ol class="breadcrumb">
+                            <li>
+                                <a href="#">首页</a>
+                            </li>
+                            <li>
+                                <a href="#">学生管理</a>
+                            </li>
+                            <li class="active">学生列表</li>
+                        </ol>
+                    </div>
+                    <div class="panel-body">
+                        <form action="" method="post" class="form-horizontal">
+                            <div class="form-group">
+                                <label for="vtitle" class="col-sm-2 control-label">姓名</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="name" value="请善待程序员" id="name" placeholder="请输入姓名">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="vsortno" class="col-sm-2 control-label">年龄</label>
+                                <div class="col-sm-10">
+                                    <input type="Number" class="form-control" name="age" value="18" id="age" placeholder="请输入年龄">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="vvideoid" class="col-sm-2 control-label">性别</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="sex" value="男" id="sex" placeholder="请输入性别">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="vsummary" class="col-sm-2 control-label">电话</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="phone" value="18888888888" id="phone" placeholder="请输入电话">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="vimg" class="col-sm-2 control-label">地址</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="address" value="中粮商务公园庭威" id="address" placeholder="请输入地址">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="vremark" class="col-sm-2 control-label">简介</label>
+                                <div class="col-sm-10">
+                                    <textarea style="width: 550px;height: 220px" name="introduction" placeholder="请输入简介">10块钱盒饭 都吃不起</textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn-control btn btn-default">修改</button>
+                                    <a href="javascript:void(0)" class="btn btn-warning">取消</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
+
 </body>
 
 </html>
@@ -138,3 +207,23 @@
 <script src="../lib/js/jquery-1.12.4.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="../lib/js/bootstrap.min.js"></script>
+<script src="../lib/js/template-web.js"></script>
+<script>
+    // 点击新增出现新增盒子 原本的列表盒子隐藏
+    $(".btn-show-add").click(function (event) {
+        // 阻止默认行为
+        event.preventDefault();
+        $('.list-box').addClass('hidden');
+        // 新增盒子
+        $('.add-box').removeClass('hidden').find('button[type=submit]').addClass("btn-danger").text(
+            '新增');
+    })
+
+    // 点击 还原原本的显示
+    $("a.btn-warning").click(function () {
+        $('.list-box').removeClass('hidden');
+        $('.add-box').addClass('hidden');
+    })
+
+    
+</script>
