@@ -6,7 +6,7 @@ let session = require('express-session');
 let bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 
-let myT=require(path.join(__dirname,'./tools/myT.js'));
+// let myT=require(path.join(__dirname,'./tools/myT.js'));
 let indexRoute = require(path.join(__dirname,'/route/indexRoute'));
 
 // Connection URL

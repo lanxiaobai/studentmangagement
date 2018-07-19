@@ -67,7 +67,7 @@ let sex = req.query.sex;
 
 
     // 修改数据
-    myT.update('studentList',{_id:objectID(req.query.id)},{address,age,introduction,name,phone,sex},(err,result)=>{
+    myT.update('usersList',{_id:objectID(req.query.id)},{address,age,introduction,name,phone,sex},(err,result)=>{
         if(!err)res.json({
             mess:'修改成功',
             code:200
@@ -78,7 +78,7 @@ let sex = req.query.sex;
 // 获取所有数据
 indexRoute.get('/list',(req,res)=>{
     // 来就给你所有的东西
-    myT.find('studentList',{},(err,docs)=>{
+    myT.find('usersList',{},(err,docs)=>{
         if(!err) res.json({
             mess:"数据",
             code:200,
@@ -106,7 +106,7 @@ indexRoute.get('/search',(req,res)=>{
     // console.log(name);
     // 来就给你所有的东西
     // mongoDB模糊查询 使用正则表达式
-    myT.find('studentList',query,(err,docs)=>{
+    myT.find('usersList',query,(err,docs)=>{
         if(!err)  res.json({
             mess:"数据",
             code:200,
